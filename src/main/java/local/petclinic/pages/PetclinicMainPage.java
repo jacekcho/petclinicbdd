@@ -23,6 +23,9 @@ public class PetclinicMainPage {
     @FindBy(css = "a[href='#']")
     private SelenideElement helpBookmark;
 
+    @FindBy(css = "img[src*='pets.png']")
+    private SelenideElement petsImage;
+
     public PetclinicMainPage() {
         page(this);
     }
@@ -38,23 +41,27 @@ public class PetclinicMainPage {
     }
 
     public boolean isFindOwnerBookmarkDisplayed() {
-        return $(findOwnersBookmark).isDisplayed();
+        return findOwnersBookmark.isDisplayed();
     }
 
     public boolean isVeterinariansBookmarkDisplayed() {
-        return $(veterinariansBookmark).isDisplayed();
+        return veterinariansBookmark.isDisplayed();
     }
 
     public boolean isErrorBookmarkDisplayed() {
-        return $(errorBookmark).isDisplayed();
+        return errorBookmark.isDisplayed();
     }
 
     public boolean isHelpBookmarkDisplayed() {
-        return $(helpBookmark).isDisplayed();
+        return helpBookmark.isDisplayed();
     }
 
     public void clickFindOwnersBookmark() {
-        $(findOwnersBookmark).click();
+        findOwnersBookmark.click();
+    }
+
+    public boolean isPetsImageAvailable() {
+        return petsImage.isImage();
     }
 
 }

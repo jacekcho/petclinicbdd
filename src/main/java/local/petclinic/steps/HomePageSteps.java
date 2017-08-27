@@ -48,4 +48,8 @@ public class HomePageSteps {
         petclinicMainPage.clickFindOwnersBookmark();
     }
 
+    @Then("^Welcome image is displayed$")
+    public void welcomeImageIsDisplayed() {
+        assertThat(petclinicMainPage.isPetsImageAvailable()).as("Welcome image not displayed").isTrue();
+    }
 }

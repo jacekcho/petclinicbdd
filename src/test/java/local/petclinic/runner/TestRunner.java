@@ -1,4 +1,4 @@
-package local.petclinic;
+package local.petclinic.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

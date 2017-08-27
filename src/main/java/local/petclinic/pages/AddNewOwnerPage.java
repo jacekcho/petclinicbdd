@@ -4,7 +4,6 @@ import com.codeborne.selenide.SelenideElement;
 import local.petclinic.utils.Generators;
 import org.openqa.selenium.support.FindBy;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
 public class AddNewOwnerPage {
@@ -30,7 +29,6 @@ public class AddNewOwnerPage {
     @FindBy(css = "table[class = 'table table-striped']")
     private SelenideElement newOwnerSummaryTable;
 
-
     public AddNewOwnerPage() {
         page(this);
     }
@@ -44,31 +42,31 @@ public class AddNewOwnerPage {
     }
 
     public void submitAndAddNewOwner() {
-        $(submitButton).click();
+        submitButton.click();
     }
 
     public boolean isNewOwnerSummaryTableDisplayed() {
-        return $(newOwnerSummaryTable).isDisplayed();
+        return newOwnerSummaryTable.isDisplayed();
     }
 
     private void enterRandomFirstName() {
-        $(firstNameInput).sendKeys(Generators.randomFirstName());
+        firstNameInput.sendKeys(Generators.randomFirstName());
     }
 
     private void enterRandomLastName() {
-        $(lastNameInput).sendKeys(Generators.randomLastName());
+        lastNameInput.sendKeys(Generators.randomLastName());
     }
 
     private void enterRandomAddress() {
-        $(addressInput).sendKeys(Generators.randomAddress());
+        addressInput.sendKeys(Generators.randomAddress());
     }
 
     private void enterRandomCity() {
-        $(cityInput).sendKeys(Generators.randomCity());
+        cityInput.sendKeys(Generators.randomCity());
     }
 
     private void enterRandomTelephone() {
-        $(telephoneInput).sendKeys(Generators.randomTelephoneNumber());
+        telephoneInput.sendKeys(Generators.randomTelephoneNumber());
     }
 
 }
