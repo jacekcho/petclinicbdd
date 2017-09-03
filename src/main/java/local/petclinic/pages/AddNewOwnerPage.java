@@ -1,7 +1,9 @@
 package local.petclinic.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import local.petclinic.dictionary.TestDataKey;
 import local.petclinic.utils.Generators;
+import local.petclinic.utils.TestData;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.page;
@@ -49,24 +51,34 @@ public class AddNewOwnerPage {
         return newOwnerSummaryTable.isDisplayed();
     }
 
-    private void enterRandomFirstName() {
-        firstNameInput.sendKeys(Generators.randomFirstName());
+    public void enterRandomFirstName() {
+        String firstName = Generators.randomFirstName();
+        TestData.set(TestDataKey.FIRST_NAME, firstName);
+        firstNameInput.sendKeys(firstName);
     }
 
-    private void enterRandomLastName() {
-        lastNameInput.sendKeys(Generators.randomLastName());
+    public void enterRandomLastName() {
+        String lastName = Generators.randomLastName();
+        TestData.set(TestDataKey.LAST_NAME, lastName);
+        lastNameInput.sendKeys(lastName);
     }
 
-    private void enterRandomAddress() {
-        addressInput.sendKeys(Generators.randomAddress());
+    public void enterRandomAddress() {
+        String address = Generators.randomAddress();
+        TestData.set(TestDataKey.ADDRESS, address);
+        addressInput.sendKeys(address);
     }
 
-    private void enterRandomCity() {
-        cityInput.sendKeys(Generators.randomCity());
+    public void enterRandomCity() {
+        String city = Generators.randomCity();
+        TestData.set(TestDataKey.CITY, city);
+        cityInput.sendKeys(city);
     }
 
-    private void enterRandomTelephone() {
-        telephoneInput.sendKeys(Generators.randomTelephoneNumber());
+    public void enterRandomTelephone() {
+        String telephone = Generators.randomTelephoneNumber();
+        TestData.set(TestDataKey.TELEPHONE, telephone);
+        telephoneInput.sendKeys(telephone);
     }
 
 }
