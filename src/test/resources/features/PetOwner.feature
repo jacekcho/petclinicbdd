@@ -2,7 +2,7 @@ Feature: Pet Owner
 
   Background:
     Given User is on home page
-    And click the Find Owners bookmark
+    And go to find owner page
 
   Scenario: User is checking owners list
     When click the Find Owner button
@@ -19,8 +19,8 @@ Feature: Pet Owner
     Then User see summary page after added new owner
 
   Scenario: User find created owner
-    And create new owner
-    And click the Find Owners bookmark
+    And create new owner with random values
+    And go to find owner page
     And enter created owner name in the search owner form
     When click the Find Owner button
     Then User see created owner data

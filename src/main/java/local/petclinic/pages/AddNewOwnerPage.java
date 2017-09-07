@@ -3,7 +3,7 @@ package local.petclinic.pages;
 import com.codeborne.selenide.SelenideElement;
 import local.petclinic.dictionary.TestDataKey;
 import local.petclinic.utils.Generators;
-import local.petclinic.utils.TestData;
+import local.petclinic.utils.DataContext;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.page;
@@ -53,31 +53,31 @@ public class AddNewOwnerPage {
 
     public void enterRandomFirstName() {
         String firstName = Generators.randomFirstName();
-        TestData.set(TestDataKey.FIRST_NAME, firstName);
+        DataContext.save(TestDataKey.FIRST_NAME, firstName);
         firstNameInput.sendKeys(firstName);
     }
 
     public void enterRandomLastName() {
         String lastName = Generators.randomLastName();
-        TestData.set(TestDataKey.LAST_NAME, lastName);
+        DataContext.save(TestDataKey.LAST_NAME, lastName);
         lastNameInput.sendKeys(lastName);
     }
 
     public void enterRandomAddress() {
         String address = Generators.randomAddress();
-        TestData.set(TestDataKey.ADDRESS, address);
+        DataContext.save(TestDataKey.ADDRESS, address);
         addressInput.sendKeys(address);
     }
 
     public void enterRandomCity() {
         String city = Generators.randomCity();
-        TestData.set(TestDataKey.CITY, city);
+        DataContext.save(TestDataKey.CITY, city);
         cityInput.sendKeys(city);
     }
 
     public void enterRandomTelephone() {
         String telephone = Generators.randomTelephoneNumber();
-        TestData.set(TestDataKey.TELEPHONE, telephone);
+        DataContext.save(TestDataKey.TELEPHONE, telephone);
         telephoneInput.sendKeys(telephone);
     }
 

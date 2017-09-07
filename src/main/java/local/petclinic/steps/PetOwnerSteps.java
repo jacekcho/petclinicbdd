@@ -1,21 +1,20 @@
 package local.petclinic.steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import local.petclinic.dictionary.TestDataKey;
 import local.petclinic.pages.AddNewOwnerPage;
 import local.petclinic.pages.OwnersPage;
-import local.petclinic.utils.TestData;
+import local.petclinic.utils.DataContext;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
 public class PetOwnerSteps {
 
-    private OwnersPage ownersPage = new OwnersPage();
-
     private AddNewOwnerPage addNewOwnerPage = new AddNewOwnerPage();
+
+    private OwnersPage ownersPage = new OwnersPage();
 
     @And("^click the Find Owner button$")
     public void clickTheFindOwnerButton() {
@@ -50,22 +49,22 @@ public class PetOwnerSteps {
 
     @And("^enter created owner name in the search owner form$")
     public void enteredCreatedOwnerNameInTheSearchOwnerForm() {
-        String ownerName = TestData.get(TestDataKey.LAST_NAME);
+        String ownerName = DataContext.getSavedData(TestDataKey.LAST_NAME);
         ownersPage.enterOwnerNameInTheSearchOwnerForm(ownerName);
     }
 
     @Then("^User see created owner data$")
     public void userSeeCreatedOwnerData() {
         assertThat(ownersPage.getPageHeader()).as("Wrong header").isEqualTo("Owner Information");
-        assertThat(ownersPage.getOwnerData()).as("Wrong owner data").contains(TestData.get(TestDataKey.FIRST_NAME));
-        assertThat(ownersPage.getOwnerData()).as("Wrong owner data").contains(TestData.get(TestDataKey.LAST_NAME));
-        assertThat(ownersPage.getOwnerData()).as("Wrong owner data").contains(TestData.get(TestDataKey.ADDRESS));
-        assertThat(ownersPage.getOwnerData()).as("Wrong owner data").contains(TestData.get(TestDataKey.TELEPHONE));
-        assertThat(ownersPage.getOwnerData()).as("Wrong owner data").contains(TestData.get(TestDataKey.CITY));
+        assertThat(ownersPage.getOwnerData()).as("Wrong owner first name").contains(DataContext.getSavedData(TestDataKey.FIRST_NAME));
+        assertThat(ownersPage.getOwnerData()).as("Wrong owner last name").contains(DataContext.getSavedData(TestDataKey.LAST_NAME));
+        assertThat(ownersPage.getOwnerData()).as("Wrong owner address").contains(DataContext.getSavedData(TestDataKey.ADDRESS));
+        assertThat(ownersPage.getOwnerData()).as("Wrong owner telephone").contains(DataContext.getSavedData(TestDataKey.TELEPHONE));
+        assertThat(ownersPage.getOwnerData()).as("Wrong owner city").contains(DataContext.getSavedData(TestDataKey.CITY));
     }
 
-    @And("^create new owner$")
-    public void createNewOwner() {
+    @And("^create new owner with random values$")
+    public void createNewOwnerWithRandomValues() {
         ownersPage.clickAddOwnerButton();
         addNewOwnerPage.enterRandomValuesForNewOwner();
         addNewOwnerPage.submitAndAddNewOwner();

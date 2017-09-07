@@ -11,13 +11,6 @@ public class HomePageSteps {
 
     private PetclinicMainPage petclinicMainPage = new PetclinicMainPage();
 
-    private final String MAIN_PAGE_TITLE = "PetClinic :: a Spring Framework demonstration";
-
-    @When("User is on home page$")
-    public void userIsOnHomePage() {
-        assertThat(petclinicMainPage.goToMainPage()).as("Not on the main page").contains(MAIN_PAGE_TITLE);
-    }
-
     @Then("^Home bookmark is displayed$")
     public void homeBookmarkIsDisplayed() {
         assertThat(petclinicMainPage.isHomeBookmarkDisplayed()).as("Home Bookmark is not displayed").isTrue();
@@ -41,11 +34,6 @@ public class HomePageSteps {
     @And("^Help bookmark is displayed$")
     public void helpBookmarkIsDisplayed() {
         assertThat(petclinicMainPage.isHelpBookmarkDisplayed()).as("Help Bookmark is not displayed").isTrue();
-    }
-
-    @When("^click the Find Owners bookmark$")
-    public void clickTheFindOwnersBookmark() {
-        petclinicMainPage.clickFindOwnersBookmark();
     }
 
     @Then("^Welcome image is displayed$")

@@ -5,15 +5,15 @@ import local.petclinic.dictionary.TestDataKey;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TestData {
+public class DataContext {
 
     private static Map<TestDataKey, String> testData = new HashMap<>();
 
-    public static void set(TestDataKey key, String value) {
+    public static void save(TestDataKey key, String value) {
         testData.put(key, value);
     }
 
-    public static String get(TestDataKey key) {
+    public static String getSavedData(TestDataKey key) {
         return testData.get(key);
     }
 

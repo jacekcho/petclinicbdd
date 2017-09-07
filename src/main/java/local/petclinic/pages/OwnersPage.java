@@ -1,8 +1,6 @@
 package local.petclinic.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import local.petclinic.dictionary.TestDataKey;
-import local.petclinic.utils.TestData;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
