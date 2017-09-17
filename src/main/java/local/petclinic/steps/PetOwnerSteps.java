@@ -7,6 +7,7 @@ import local.petclinic.dictionary.TestDataKey;
 import local.petclinic.pages.AddNewOwnerPage;
 import local.petclinic.pages.OwnersPage;
 import local.petclinic.utils.DataContext;
+import local.petclinic.utils.Generators;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -72,26 +73,36 @@ public class PetOwnerSteps {
 
     @And("^enter random first name$")
     public void enterRandomFirstName() {
-        addNewOwnerPage.enterRandomFirstName();
+        String firstName = Generators.randomFirstName();
+        DataContext.save(TestDataKey.FIRST_NAME, firstName);
+        addNewOwnerPage.enterFirstName(firstName);
     }
 
     @And("^enter random last name$")
     public void enterRandomLastName() {
-        addNewOwnerPage.enterRandomLastName();
+        String lastName = Generators.randomLastName();
+        DataContext.save(TestDataKey.LAST_NAME, lastName);
+        addNewOwnerPage.enterLastName(lastName);
     }
 
     @And("^enter random address$")
     public void enterRandomAddress() {
-        addNewOwnerPage.enterRandomAddress();
+        String address = Generators.randomAddress();
+        DataContext.save(TestDataKey.ADDRESS, address);
+        addNewOwnerPage.enterAddress(address);
     }
 
     @And("^enter random city$")
     public void enterRandomCity() {
-        addNewOwnerPage.enterRandomCity();
+        String city = Generators.randomCity();
+        DataContext.save(TestDataKey.CITY, city);
+        addNewOwnerPage.enterRandomCity(city);
     }
 
     @And("^enter random telephone$")
     public void enterRandomTelephone() {
-        addNewOwnerPage.enterRandomTelephone();
+        String telephone = Generators.randomTelephoneNumber();
+        DataContext.save(TestDataKey.TELEPHONE, telephone);
+        addNewOwnerPage.enterTelephone(telephone);
     }
 }

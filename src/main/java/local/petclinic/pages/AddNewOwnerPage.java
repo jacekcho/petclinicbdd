@@ -36,11 +36,11 @@ public class AddNewOwnerPage {
     }
 
     public void enterRandomValuesForNewOwner() {
-        enterRandomFirstName();
-        enterRandomLastName();
-        enterRandomAddress();
-        enterRandomCity();
-        enterRandomTelephone();
+        enterFirstName(Generators.randomFirstName());
+        enterLastName(Generators.randomLastName());
+        enterAddress(Generators.randomAddress());
+        enterRandomCity(Generators.randomCity());
+        enterTelephone(Generators.randomTelephoneNumber());
     }
 
     public void submitAndAddNewOwner() {
@@ -51,33 +51,23 @@ public class AddNewOwnerPage {
         return newOwnerSummaryTable.isDisplayed();
     }
 
-    public void enterRandomFirstName() {
-        String firstName = Generators.randomFirstName();
-        DataContext.save(TestDataKey.FIRST_NAME, firstName);
+    public void enterFirstName(String firstName) {
         firstNameInput.sendKeys(firstName);
     }
 
-    public void enterRandomLastName() {
-        String lastName = Generators.randomLastName();
-        DataContext.save(TestDataKey.LAST_NAME, lastName);
+    public void enterLastName(String lastName) {
         lastNameInput.sendKeys(lastName);
     }
 
-    public void enterRandomAddress() {
-        String address = Generators.randomAddress();
-        DataContext.save(TestDataKey.ADDRESS, address);
+    public void enterAddress(String address) {
         addressInput.sendKeys(address);
     }
 
-    public void enterRandomCity() {
-        String city = Generators.randomCity();
-        DataContext.save(TestDataKey.CITY, city);
+    public void enterRandomCity(String city) {
         cityInput.sendKeys(city);
     }
 
-    public void enterRandomTelephone() {
-        String telephone = Generators.randomTelephoneNumber();
-        DataContext.save(TestDataKey.TELEPHONE, telephone);
+    public void enterTelephone(String telephone) {
         telephoneInput.sendKeys(telephone);
     }
 
