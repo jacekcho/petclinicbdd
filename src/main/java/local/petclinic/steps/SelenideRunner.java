@@ -1,9 +1,15 @@
 package local.petclinic.steps;
 
-import com.codeborne.selenide.Selenide;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+
+import static com.codeborne.selenide.Selenide.screenshot;
 
 public class SelenideRunner {
 
@@ -13,8 +19,12 @@ public class SelenideRunner {
     }
 
     @After
-    public void executeAfterScenario() {
-        Selenide.close();
+    public void executeAfterScenario(Scenario scenario) throws IOException {
+        if (scenario.isFailed()) {
+            File scrFile = new File(screenshot(scenario.getName()));
+            byte[] screenshot = FileUtils.readFileToByteArray(scrFile);
+            scenario.embed(screenshot, "image/png");
+        }
     }
 
     private void selenideSettings() {

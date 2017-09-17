@@ -37,7 +37,7 @@ public class PetclinicMainPage {
     }
 
     public boolean isHomeBookmarkDisplayed() {
-        return $(homeBookmark).isDisplayed();
+        return homeBookmark.isDisplayed();
     }
 
     public boolean isFindOwnerBookmarkDisplayed() {
