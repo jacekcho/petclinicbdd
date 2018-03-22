@@ -2,3 +2,4 @@
 petclinic-bdd.iml
 target/
 build/
+debug.log

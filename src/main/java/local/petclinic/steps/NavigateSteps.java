@@ -16,7 +16,7 @@ public class NavigateSteps {
         assertThat(petclinicMainPage.goToMainPage()).as("Not on the main page").contains(MAIN_PAGE_TITLE);
     }
 
-    @When("^go to find owner page$")
+    @When("^user goes to find owner page$")
     public void clickTheFindOwnersBookmark() {
         petclinicMainPage.clickFindOwnersBookmark();
     }

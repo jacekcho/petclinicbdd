@@ -2,7 +2,6 @@ package local.petclinic.steps;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import local.petclinic.pages.PetclinicMainPage;
 
 import static org.fest.assertions.api.Assertions.assertThat;

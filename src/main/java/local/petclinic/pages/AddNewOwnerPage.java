@@ -35,14 +35,6 @@ public class AddNewOwnerPage {
         page(this);
     }
 
-    public void enterRandomValuesForNewOwner() {
-        enterFirstName(Generators.randomFirstName());
-        enterLastName(Generators.randomLastName());
-        enterAddress(Generators.randomAddress());
-        enterRandomCity(Generators.randomCity());
-        enterTelephone(Generators.randomTelephoneNumber());
-    }
-
     public void submitAndAddNewOwner() {
         submitButton.click();
     }

@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import local.petclinic.dictionary.TestDataKey;
+import local.petclinic.injections.InjectOwners;
 import local.petclinic.pages.AddNewOwnerPage;
 import local.petclinic.pages.OwnersPage;
 import local.petclinic.utils.DataContext;
@@ -17,15 +18,17 @@ public class PetOwnerSteps {
 
     private OwnersPage ownersPage = new OwnersPage();
 
-    @And("^click the Find Owner button$")
+    private InjectOwners injectOwner = new InjectOwners();
+
+    @And("^user clicks the Find Owner button$")
     public void clickTheFindOwnerButton() {
         ownersPage.clickSubmitButton();
     }
 
-    @Then("^User see list of owners$")
+    @Then("^user see list of owners$")
     public void userSeeListOfOwners() {
         assertThat(ownersPage.getPageHeader()).as("Wrong header").isEqualTo("Owners");
-        assertThat(ownersPage.getOwnersList()).as("Owners list is empty").isNotEmpty();
+        assertThat(ownersPage.getOwnersList()).as("InjectOwners list is empty").isNotEmpty();
     }
 
     @When("^click Add Owner button$")
@@ -33,17 +36,12 @@ public class PetOwnerSteps {
         ownersPage.clickAddOwnerButton();
     }
 
-    @And("^enter random values for new owner$")
-    public void enterRandomValuesForNewOwner() {
-        addNewOwnerPage.enterRandomValuesForNewOwner();
-    }
-
     @And("^click submit and add owner$")
     public void clickSubmitAndAddOwner() {
         addNewOwnerPage.submitAndAddNewOwner();
     }
 
-    @Then("^User see summary page after added new owner$")
+    @Then("^user see summary page after added new owner$")
     public void userSeeSummaryPageAfterAddedNewOwner() {
         assertThat(addNewOwnerPage.isNewOwnerSummaryTableDisplayed()).as("The new owner has not been created").isTrue();
     }
@@ -54,7 +52,7 @@ public class PetOwnerSteps {
         ownersPage.enterOwnerNameInTheSearchOwnerForm(ownerName);
     }
 
-    @Then("^User see created owner data$")
+    @Then("^user see created owner data$")
     public void userSeeCreatedOwnerData() {
         assertThat(ownersPage.getPageHeader()).as("Wrong header").isEqualTo("Owner Information");
         assertThat(ownersPage.getOwnerData()).as("Wrong owner first name").contains(DataContext.getSavedData(TestDataKey.FIRST_NAME));
@@ -65,44 +63,47 @@ public class PetOwnerSteps {
     }
 
     @And("^create new owner with random values$")
-    public void createNewOwnerWithRandomValues() {
-        ownersPage.clickAddOwnerButton();
-        addNewOwnerPage.enterRandomValuesForNewOwner();
-        addNewOwnerPage.submitAndAddNewOwner();
+    public void injectNewOwnerWithRandomValues() {
+        injectOwner.addOwner();
+        DataContext.save(TestDataKey.LAST_NAME, injectOwner.getOwnerLastName());
+        DataContext.save(TestDataKey.FIRST_NAME, injectOwner.getOwnerFirstName());
+        DataContext.save(TestDataKey.ADDRESS, injectOwner.getOwnerAddress());
+        DataContext.save(TestDataKey.CITY, injectOwner.getOwnerCity());
+        DataContext.save(TestDataKey.TELEPHONE, injectOwner.getOwnerTelephone());
     }
 
     @And("^enter random first name$")
     public void enterRandomFirstName() {
         String firstName = Generators.randomFirstName();
-        DataContext.save(TestDataKey.FIRST_NAME, firstName);
         addNewOwnerPage.enterFirstName(firstName);
+        DataContext.save(TestDataKey.FIRST_NAME, firstName);
     }
 
     @And("^enter random last name$")
     public void enterRandomLastName() {
         String lastName = Generators.randomLastName();
-        DataContext.save(TestDataKey.LAST_NAME, lastName);
         addNewOwnerPage.enterLastName(lastName);
+        DataContext.save(TestDataKey.LAST_NAME, lastName);
     }
 
     @And("^enter random address$")
     public void enterRandomAddress() {
         String address = Generators.randomAddress();
-        DataContext.save(TestDataKey.ADDRESS, address);
         addNewOwnerPage.enterAddress(address);
+        DataContext.save(TestDataKey.ADDRESS, address);
     }
 
     @And("^enter random city$")
     public void enterRandomCity() {
         String city = Generators.randomCity();
-        DataContext.save(TestDataKey.CITY, city);
         addNewOwnerPage.enterRandomCity(city);
+        DataContext.save(TestDataKey.CITY, city);
     }
 
     @And("^enter random telephone$")
     public void enterRandomTelephone() {
         String telephone = Generators.randomTelephoneNumber();
-        DataContext.save(TestDataKey.TELEPHONE, telephone);
         addNewOwnerPage.enterTelephone(telephone);
+        DataContext.save(TestDataKey.TELEPHONE, telephone);
     }
 }

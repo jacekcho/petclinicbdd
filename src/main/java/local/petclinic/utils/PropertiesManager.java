@@ -52,4 +52,7 @@ public class PropertiesManager {
         return properties.getProperty("petclinic.url");
     }
 
+    public String getPetClinicAddOwnerUrl() {
+        return properties.getProperty("petclinic.add.owner.url");
+    }
 }
